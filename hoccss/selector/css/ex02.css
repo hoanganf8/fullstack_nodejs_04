@@ -1,0 +1,31 @@
+.box h2 ~ p, .box h2 ~ div p {
+    color: red;
+}
+
+/*
+selector1, selector2, selector3, selectorn {
+    //Nội dung
+}
+*/
+
+/* .box h2 ~ div p {
+    color: red;
+} */
+
+/* .content p + h2, .content p + h2 + h2 {
+    color: red;
+} */
+
+.content h2 + h2 {
+    color: red;
+}
+
+.todos input:checked ~ span {
+    color: red;
+    text-decoration: line-through;
+}
+
+h2#heading.big + p {
+    color: red;
+    font-style: italic;
+}

@@ -1,0 +1,35 @@
+/* * {
+    color: red;
+} */
+
+/* .title {
+    color: red;
+}
+
+#title {
+    color: green;
+}
+
+p {
+    color: violet;
+} */
+
+/* .box h2 {
+    color: red;
+}
+
+.content h2 {
+    color:green;
+} */
+
+/* .box > h2 {
+    color: red;
+} */
+
+h1.name#first {
+    color: red;
+}
+
+h2#last.name {
+    color: green;
+}
