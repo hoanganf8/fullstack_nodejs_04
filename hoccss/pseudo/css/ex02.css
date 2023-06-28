@@ -1,0 +1,29 @@
+/*
+Pseudo Classes
+
+selector:pseudo{
+
+}
+
+Phân biệt: 
+:hover 
+:active 
+:focus
+*/
+
+.title:hover {
+  color: red;
+}
+
+.title:active {
+  color: green;
+}
+
+.btn:focus,
+.field-item:focus {
+  background: blueviolet;
+}
+
+.text:focus {
+  color: red;
+}

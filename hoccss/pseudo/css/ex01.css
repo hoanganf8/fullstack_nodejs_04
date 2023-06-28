@@ -1,0 +1,61 @@
+/*
+Pseudo Element
+
+Cấu trúc:
+
+selector::pseudo {
+
+}
+
+Ví dụ: 
+a::before {
+
+}
+*/
+
+/* .title::before {
+  content: "A";
+}
+
+.title::after {
+  content: "B";
+} */
+
+.title::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 4px;
+  background-color: red;
+  transition: all 0.4s linear;
+}
+
+.title:hover::after {
+  width: 50px;
+}
+
+.box::after {
+  content: attr(data-name);
+}
+
+.box::first-line {
+  color: red;
+}
+
+.box::first-letter {
+  font-size: 2rem;
+  font-style: italic;
+}
+
+.box::selection {
+  background: black;
+  color: yellow;
+}
+
+.name {
+  color: red;
+}
+
+.name::placeholder {
+  color: currentColor;
+}

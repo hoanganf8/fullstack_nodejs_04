@@ -1,0 +1,25 @@
+/* .website a[target] {
+  color: red;
+} */
+
+/* .website a[href="https://fullstack.edu.vn"]
+{
+  color: red;
+} */
+
+/* .website a[href^="https://fullstack.edu.vn"]
+{
+  color: red;
+} */
+
+/*Regular Expression
+Regex
+*/
+
+/* .website a[href*="fullstack.edu.vn"] {
+  color: red;
+} */
+
+.images a[href$=".jpg"] {
+  color: red;
+}
