@@ -1,0 +1,51 @@
+/*
+background-color
+background-image
+background-position
+background-repeat
+background-size
+background-attachment
+
+=> background: Tổng hợp tất cả các thuộc tính trên
+*/
+
+body {
+  height: 2000px;
+  /* background-color: aqua;
+  background-image: url("https://fastly.picsum.photos/id/665/1600/600.jpg?hmac=VzYZXSNiJvJr3PzRa08LOqlJIqEDJOaV8Qp3RkCoVq0");
+  background-repeat: no-repeat; */
+  /* background-position: -50px -50px; */
+  /* background-size: auto 100%; */
+  /* background-size: cover; */
+  /* background-attachment: fixed; */
+
+  background: fixed aqua
+    url("https://fastly.picsum.photos/id/665/1600/600.jpg?hmac=VzYZXSNiJvJr3PzRa08LOqlJIqEDJOaV8Qp3RkCoVq0")
+    no-repeat 0 0 / cover;
+}
+
+/*
+Tìm hiểu sự khác nhau
+- cover
+- contain
+*/
+
+/* .box {
+  height: 1500px;
+  background-color: yellow;
+  background-image: url("https://fastly.picsum.photos/id/277/1000/2000.jpg?hmac=ekWZknXggzqgOotsWBXbpvkYLH2Kj6GjvjBXauZ9JCM");
+  background-repeat: no-repeat;
+  background-size: contain;
+} */
+
+/* .box h1 {
+  background-color: bisque;
+}
+
+.box p {
+  background-color: azure;
+}
+
+.box h1:hover {
+  background-color: transparent;
+} */

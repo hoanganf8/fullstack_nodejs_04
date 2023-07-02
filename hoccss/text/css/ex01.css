@@ -1,0 +1,35 @@
+.box {
+  /* color: #0c5326; */
+  color: rgb(0, 149, 255);
+}
+
+.box h1 {
+  /* color: #0c53267b; */
+  color: rgba(0, 149, 255, 0.5);
+}
+
+.box .content {
+  color: green;
+}
+
+.box h1:hover {
+  /* color: initial; */
+  color: inherit;
+}
+
+/*
+color:
+- name (Tiếng Anh)
+- hexa
+- rgb
+- hsl
+
+=> Công cụ lấy mã màu: color picker
+- Visual Studio Code
+- Chrome Extension
+- Dev Tools
+
+Các giá trị có trong các thuộc tính CSS
+- initial
+- inherit
+*/

@@ -1,0 +1,48 @@
+@font-face {
+  font-family: "Open Sans";
+  src: url("../fonts/OpenSans-Light.ttf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../fonts/OpenSans-Regular.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../fonts/OpenSans-Medium.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("../fonts/OpenSans-Bold.ttf");
+  font-weight: 700;
+}
+
+/*
+font-weight: Thay đổi độ dày của văn bản
+font-style: Thay  đổi độ nghiêng của văn bản
+*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+body {
+  /* font-family: "Open Sans", sans-serif; */
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  /* text-indent: 10px; */
+}
+
+.content a {
+  /* text-decoration: underline overline line-through; */
+  /* text-transform: capitalize; */
+  /* letter-spacing: 3px; */
+  word-spacing: 5px;
+}
+
+.box {
+  word-wrap: break-word;
+}
