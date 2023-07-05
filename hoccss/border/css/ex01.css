@@ -1,0 +1,35 @@
+.box {
+  /* border-width: 2px;
+  border-style: dotted;
+  border-color: red; */
+  /* border: 2px red;
+  border-style: solid; */
+  /* border-left: 1px solid red;
+  border-right: 1px dotted green;
+  border-top: 1px double blue;
+  border-bottom: 1px solid blueviolet; */
+  border-top-width: 5px;
+  border-left-width: 5px;
+  border-right-width: 5px;
+  border-bottom-width: 5px;
+
+  border-top-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+
+  /* border-top-color: red;
+  border-left-color: green;
+  border-right-color: blue;
+  border-bottom-color: blueviolet; */
+
+  border-color: red green blue transparent;
+}
+
+/*
+style: 
+- solid
+- dashed
+- dotted
+- double
+*/

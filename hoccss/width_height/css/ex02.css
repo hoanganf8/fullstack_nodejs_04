@@ -1,0 +1,29 @@
+.img {
+  width: 200px;
+  height: 200px;
+  /* vertical-align: bottom; */
+}
+
+/*
+Inline Elements có 2 nhóm
+- Inline Replace
+- Inline Non-Replace
+*/
+
+.images {
+  font-size: 0;
+  /* line-height: 0; */
+}
+
+.product img {
+  display: block;
+}
+
+.product h3 {
+  background: red;
+  margin: 0;
+}
+
+body {
+  font-size: 50px;
+}

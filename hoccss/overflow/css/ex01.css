@@ -1,0 +1,15 @@
+/*
+overflow: visible | hidden | scroll | auto
+*/
+.box {
+  width: 200px;
+  height: 200px;
+  border: 1px solid red;
+  /* overflow: auto; */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.box ul {
+  width: 500px;
+}
