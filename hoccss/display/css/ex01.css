@@ -1,0 +1,28 @@
+/*
+Thuộc tính display: Thay đổi cách hiển thị của 1 thẻ html
++ none => Ẩn
++ block => Hiển thị như thẻ block
++ inline => Hiển thị như thẻ inline
++ inline-block => Mỗi thành phần là 1 thẻ block, tuy nhiên nằm trên 1 dòng như thẻ inline
+
+Các giá trị phức tạp => Chuyên đề riêng
++ flex
++ grid
++ list-item
++ table
++ table-cell
+*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.box {
+  border: 1px solid red;
+  /* display: none; */
+  /* visibility: hidden; */
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}

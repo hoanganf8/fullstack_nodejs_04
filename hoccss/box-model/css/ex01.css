@@ -1,0 +1,34 @@
+/* .box {
+  width: 300px;
+  border: 1px solid red;
+  margin: 30px auto;
+  padding: 15px;
+  box-sizing: border-box;
+} */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.products {
+  width: 800px;
+  margin: 30px auto;
+  border: 1px solid red;
+}
+
+.products::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.products .item {
+  float: left;
+  width: 33.33%;
+  background: green;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 30px;
+}

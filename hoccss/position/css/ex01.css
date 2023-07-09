@@ -1,0 +1,38 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.box {
+  width: 300px;
+  height: 300px;
+  border: 1px solid red;
+  margin: 30px auto;
+}
+
+.item {
+  background-color: green;
+  color: #fff;
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border: 1px solid #fff;
+}
+
+/*
+Thuộc tính position = Thay đổi vị trí các elements
+- relative => Vị trí tương đối
+- absolute => Vị trí tuyệt đối
+- fixed => Vị trí cố định
+- static => Không có position (Mặc định)
+
+Các thuộc tính liên quan
+- top
+- left
+- right
+- bottom
+- inset
+- z-index
+*/

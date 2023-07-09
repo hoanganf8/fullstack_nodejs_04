@@ -1,0 +1,26 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.images {
+  border: 1px solid red;
+  padding: 15px;
+  width: 400px;
+  margin: 30px auto;
+}
+
+.images::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.images img {
+  width: 40%;
+  height: auto;
+  float: left;
+  margin-right: 15px;
+  border-radius: 50%;
+  shape-outside: circle();
+}

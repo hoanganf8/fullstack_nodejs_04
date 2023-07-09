@@ -1,0 +1,54 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.box {
+  width: 300px;
+  border: 1px solid red;
+  margin: 30px auto;
+  /* overflow: auto; */
+}
+
+.box::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.col-1 {
+  width: 100px;
+  height: 50px;
+  background-color: green;
+  color: #fff;
+  float: left;
+}
+
+.col-2 {
+  width: 100px;
+  height: 100px;
+  background-color: blueviolet;
+  color: #fff;
+  float: left;
+}
+
+/* .text {
+  clear: both;
+} */
+
+.clearfix {
+  display: block;
+  clear: both;
+}
+
+/*
+Thuộc tính float: Trôi thành phần sang bên trái hoặc bên phải theo thành phần cha trực tiếp
++ none
++ left
++ right
+
+Thuộc tính clear: Khắc phục tự động trôi các thành phần theo float
++ left
++ right
++ both
+*/
