@@ -1,0 +1,48 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.box {
+  border: 1px solid red;
+}
+
+.box h2 {
+  /* transition-property: padding-left, color, padding-top, font-size; */
+  /* transition-property: all; */
+  /* transition-duration: 2s; */
+  /* transition-delay: 1s; */
+  /* transition-timing-function: cubic-bezier(0.23, 1, 0.9, 0.1); */
+  transition: 0.4s linear;
+  transition-property: padding-left, color;
+}
+
+.box h2:hover {
+  padding-left: 200px;
+  color: green;
+  /* padding-top: 100px;
+  color: red;
+  font-size: 2rem; */
+}
+
+/*
+Transition: Thiết lập thời gian thay đổi giá trị các thuộc tính CSS
+=> Chỉ áp dụng với các thuộc tính có giá trị là số
+
+- transition-property: all | tenthuoctinh
+- transition-duration: time (s, ms)
+- transition-delay: time (s, ms)
+- transition-timing-function: Thiết lập tốc độ cho các trình chuyển động
++ ease: Chậm - Nhanh - Chậm
++ ease-in: Chậm - Nhanh
++ ease-out: Nhanh - Chậm
++ ease-in-out: Chậm - Nhanh - Chậm (Khởi động chậm hơn, về đích chậm hơn)
++ linear: Tốc độ đều
++ cubic-bezier(p1, p2, p3, p4)
+Chia thành 4 giai đoạn
+Chỉ nhận từ 0 đến 1
+Số càng bé chạy càng nhanh
+
+- transition: property duration delay timing
+*/
