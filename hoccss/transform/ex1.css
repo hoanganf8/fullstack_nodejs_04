@@ -1,0 +1,38 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container:hover .box {
+    transform: rotate(45deg);
+}
+
+.box {
+    width: 150px;
+    height: 150px;
+    background: orange;
+    transition: 1s;
+}
+
+/*
+    transform: rotate(10deg)
+        scale(1.5) skew(20deg)
+        translate(100px);
+    transform-origin: top right;
+
+    rotate: 45deg;
+    scale: 2;
+    scale: 2 3;
+    translate: 200px 100px;
+
+    Lưu ý: khi làm transition/animation ưu tiên các thuộc tính:
+        1. transform: rotate, scale, skew, translate
+        2. opacity
+
+    *Khi nào không sử dụng được những thuộc tính trên,
+    thì mới dùng thuộc tính khác
+
+    => Tối ưu về hiệu năng (performance)
+*/
