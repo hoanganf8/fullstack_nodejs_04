@@ -1,0 +1,34 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.box {
+  background-color: green;
+  width: 300px;
+  height: 200px;
+  margin: 30px auto;
+  /* background-image: linear-gradient(300deg, red 0%, green 60%, yellow 100%); */
+  background-image: radial-gradient(
+    circle,
+    rgba(138, 63, 223, 1) 0%,
+    rgba(184, 125, 125, 1) 23%,
+    rgba(239, 197, 68, 1) 50%,
+    rgba(206, 91, 174, 1) 81%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
+/*
+Background Gradient
+1. linear-gradient
+background-image: linear-gradient(color1 stopcolor1, color2 stopcolor2,...)
+
+2. radial-gradient
+background-image: radial-gradient(shape, color1 stopcolor1, color2 stopcolor2,...)
+
+Trong đó:
+shape nhận: ellipse và circle
+
+*/

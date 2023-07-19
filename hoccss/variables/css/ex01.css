@@ -1,0 +1,47 @@
+/*
+Biến trong CSS
+
+1. Biến toàn cục (Global Variable)
+- Khai báo ở lớp giả :root
+- Sử dụng khắp mọi nơi
+
+2. Biến cục bộ (Local Variable)
+
+- Khai báo trong Selector tương ứng
+- Sử dụng ở selector đó và các selector con của nó
+
+*/
+
+:root {
+  --primary-color: green;
+  --secondary-color: blue;
+  --text-color: #333;
+  --font-family: Roboto, sans-serif;
+}
+
+body {
+  color: var(--primary-color);
+}
+
+.box {
+  --font-style: italic;
+  --border-color: red;
+  /* --secondary-color: red; */
+  border: 3px double var(--border-color);
+}
+
+.box p {
+  font-family: var(--font-family);
+  font-style: var(--font-style);
+}
+
+.box h1 {
+  font-style: var(--font-style);
+  color: var(--secondary-color);
+}
+
+.box:hover {
+  /* border-color: blueviolet; */
+  /* border: 3px double blueviolet; */
+  --border-color: blueviolet;
+}
