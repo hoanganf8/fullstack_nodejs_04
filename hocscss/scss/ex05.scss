@@ -1,0 +1,17 @@
+@import "parts/variables";
+@import "parts/mixin";
+
+.container {
+  @include center(text);
+  div {
+    width: 300px;
+    border: 1px solid $primaryColor;
+  }
+}
+
+/*
+$type == flex => Căn giữa bằng flex
+$type == margin => Căn giữa bằng margin
+$type == position => Căn giữa bằng position
+$type == text => Căn giữa bằng text-align
+*/

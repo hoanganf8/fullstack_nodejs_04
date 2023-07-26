@@ -1,0 +1,46 @@
+/*
+Mixin không tham số
+
+Mixin có tham số
+*/
+@mixin section-base {
+  padding: 30px 0;
+  border: 1px solid #ccc;
+  //   .container {
+  //     width: 1200px;
+  //     margin: 0 auto;
+  //   }
+}
+
+@mixin column {
+  .col {
+    width: 50%;
+  }
+}
+
+@mixin green {
+  color: green;
+}
+
+@mixin red {
+  @include green;
+  color: red;
+}
+
+@mixin center($width, $spacer: 0) {
+  width: $width;
+  margin: $spacer auto;
+}
+
+.products {
+  @include section-base;
+  background: green;
+  //   @include green;
+  @include red;
+}
+
+@include column;
+
+.posts {
+  @include center(1200px, 30px);
+}

@@ -1,0 +1,58 @@
+@charset "UTF-8";
+/*
+Kế thừa trong SCSS
+
+1. extend
+- Gom nhóm các đoạn css dùng chung thành 1 block riêng
+- Tái sử dụng từ 1 selector có sẵn
+@extend selector
+
+2. placeholder
+2.1. Định nghĩa placeholder
+%tenplaceholder {
+    //Code
+}
+
+2.2. Gọi placeholder
+@extend %tenplaceholder
+
+3. mixin
+*/
+.services, .products, .posts {
+  padding: 30px 0;
+  border: 1px solid red;
+}
+
+.posts {
+  list-style: none;
+}
+
+.posts {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.posts {
+  background: green;
+}
+
+.products {
+  background: gray;
+}
+
+.services {
+  color: red;
+}
+
+.menu li a {
+  color: #333;
+}
+.menu li a.active, .menu li a:hover {
+  color: green;
+  border-bottom: 1px solid green;
+}
+.menu li a:hover {
+  color: red;
+}
+
+/*# sourceMappingURL=ex03.css.map */

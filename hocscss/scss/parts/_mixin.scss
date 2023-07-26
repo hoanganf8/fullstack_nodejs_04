@@ -1,0 +1,25 @@
+@mixin center($type) {
+  //Viết code mixin
+  @if $type == flex {
+    display: flex;
+    justify-content: center;
+  } @else if $type == position {
+    position: relative;
+    > * {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  } @else if $type == margin {
+    > * {
+      margin: 0 auto;
+    }
+  } @else {
+    //text
+    text-align: center;
+    > * {
+      display: inline-block;
+      text-align: left;
+    }
+  }
+}

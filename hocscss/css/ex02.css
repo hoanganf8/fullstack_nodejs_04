@@ -1,0 +1,43 @@
+@charset "UTF-8";
+.box {
+  padding: 20px 0;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.col-lg-5 {
+  width: 50%;
+}
+
+/*
+Câu lệnh rẽ nhánh
+
+1. Câu lệnh rẽ nhánh thiếu (1 nhánh)
+
+@if (condition) {
+    //Body
+}
+
+2. Câu lệnh rẽ nhánh đủ (2 nhánh)
+
+@if (condition) {
+    //body true
+} @else {
+    //body false
+}
+
+3. Câu lệnh nhiều nhánh (@if @else if)
+@if (condition) {
+    //body
+} @else if (condition) {
+    //body
+} @else if (condition) {
+    //body
+} @else {
+    //body
+}
+*/
+
+/*# sourceMappingURL=ex02.css.map */

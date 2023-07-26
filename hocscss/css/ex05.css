@@ -1,0 +1,21 @@
+@charset "UTF-8";
+.container {
+  text-align: center;
+}
+.container > * {
+  display: inline-block;
+  text-align: left;
+}
+.container div {
+  width: 300px;
+  border: 1px solid red;
+}
+
+/*
+$type == flex => Căn giữa bằng flex
+$type == margin => Căn giữa bằng margin
+$type == position => Căn giữa bằng position
+$type == text => Căn giữa bằng text-align
+*/
+
+/*# sourceMappingURL=ex05.css.map */

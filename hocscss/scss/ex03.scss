@@ -1,0 +1,73 @@
+/*
+Kế thừa trong SCSS
+
+1. extend
+- Gom nhóm các đoạn css dùng chung thành 1 block riêng
+- Tái sử dụng từ 1 selector có sẵn
+@extend selector
+
+2. placeholder
+2.1. Định nghĩa placeholder
+%tenplaceholder {
+    //Code
+}
+
+2.2. Gọi placeholder
+@extend %tenplaceholder
+
+3. mixin
+*/
+
+// .box {
+//   padding: 30px 0;
+//   border: 1px solid red;
+// }
+
+%section-base {
+  padding: 30px 0;
+  border: 1px solid red;
+}
+
+%reset-list {
+  list-style: none;
+}
+
+%center {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.posts {
+  background: green;
+  //   @extend .box;
+  @extend %section-base;
+  @extend %reset-list;
+  @extend %center;
+}
+
+.products {
+  background: gray;
+  //   @extend .box;
+  @extend %section-base;
+}
+
+.services {
+  @extend %section-base;
+  color: red;
+}
+
+.menu {
+  li {
+    a {
+      color: #333;
+      &.active {
+        color: green;
+        border-bottom: 1px solid green;
+      }
+      &:hover {
+        @extend .active;
+        color: red;
+      }
+    }
+  }
+}

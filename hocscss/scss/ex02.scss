@@ -1,0 +1,67 @@
+.box {
+  padding: 20px 0;
+}
+
+$number: 0;
+
+@if ($number > 0) {
+  //block code
+  .box-2 {
+    padding: 40px 0;
+  }
+}
+
+$width: 50;
+.w-#{$width} {
+  @if ($width > 0 and $width <= 100) {
+    width: #{$width + 0%};
+  } @else if ($width <= 0) {
+    width: 0;
+  } @else {
+    width: 100%;
+  }
+}
+
+//.col-md-5
+$prefix: col;
+$breakpoint: lg;
+$number: 5;
+
+$selector: #{"." + $prefix + "-" + $number};
+
+@if ($breakpoint != "") {
+  $selector: #{"." + $prefix + "-" + $breakpoint + "-" + $number};
+}
+
+#{$selector} {
+  width: 50%;
+}
+
+/*
+Câu lệnh rẽ nhánh
+
+1. Câu lệnh rẽ nhánh thiếu (1 nhánh)
+
+@if (condition) {
+    //Body
+}
+
+2. Câu lệnh rẽ nhánh đủ (2 nhánh)
+
+@if (condition) {
+    //body true
+} @else {
+    //body false
+}
+
+3. Câu lệnh nhiều nhánh (@if @else if)
+@if (condition) {
+    //body
+} @else if (condition) {
+    //body
+} @else if (condition) {
+    //body
+} @else {
+    //body
+}
+*/
