@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.menu {
+  list-style: none;
+  background: black;
+  width: 50%;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.menu li a {
+  display: block;
+  padding: 5px 10px;
+}
+
+.menu ul {
+  padding-left: 10px;
+  background: #333;
+  display: none;
+}
+
+.menu ul.open {
+  display: block;
+}
+
+.menu li.has-children > a::after {
+  content: "˅";
+  float: right;
+}
+.menu li.has-children.icon-open > a::after {
+  rotate: 180deg;
+}
