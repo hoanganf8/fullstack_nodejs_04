@@ -135,6 +135,8 @@ var handleKaraoke = function () {
     );
   });
 
+  handlePaintColor(currentTime);
+
   if (index !== -1 && currentIndex !== index) {
     if (index === 0) {
       //Khi bắt đầu hát
@@ -159,24 +161,46 @@ var handleKaraoke = function () {
   requestId = requestAnimationFrame(handleKaraoke);
 };
 
+var handlePaintColor = function (currentTime) {
+  var wordEl = karaokeContent.querySelectorAll(".word");
+  if (wordEl.length) {
+    wordEl.forEach(function (wordItem, index) {
+      var startTime = wordItem.dataset.startTime;
+      var endTime = wordItem.dataset.endTime;
+
+      if (currentTime > startTime && currentTime < endTime) {
+        var rate = ((currentTime - startTime) / (endTime - startTime)) * 100;
+        wordItem.children[0].style.width = `${rate}%`;
+        if (index > 0) {
+          wordEl[index - 1].children[0].style.width = `${rate}%`;
+        }
+      }
+
+      // if (index > 0 && currentTime >= wordEl[index - 1].endTime) {
+      //   wordEl[index - 1].children[0].style.width = `${rate}%`;
+      // }
+    });
+  }
+};
+
 var nextSentence = function (index) {
   var lines = karaokeContent.children;
   if (index % 2 !== 0) {
-    lines[0].style.transition = `opacity 0.3s linear`;
+    lines[0].style.transition = `opacity 0.4s linear`;
     lines[0].style.opacity = 0;
 
     setTimeout(function () {
       lines[0].style.opacity = 1;
       lines[0].innerHTML = getSentence(index + 1);
-    }, 300);
+    }, 400);
   } else {
-    lines[1].style.transition = `opacity 0.3s linear`;
+    lines[1].style.transition = `opacity 0.4s linear`;
     lines[1].style.opacity = 0;
 
     setTimeout(function () {
       lines[1].style.opacity = 1;
       lines[1].innerHTML = getSentence(index + 1);
-    }, 300);
+    }, 400);
   }
 };
 
@@ -184,7 +208,7 @@ var getSentence = function (index) {
   var words = lyric[index].words;
   var sentence = words
     .map(function (word) {
-      return word.data;
+      return `<span class="word" data-start-time="${word.startTime}" data-end-time="${word.endTime}">${word.data}<span>${word.data}</span></span>`;
     })
     .join(" ");
   return sentence;

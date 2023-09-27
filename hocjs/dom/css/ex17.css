@@ -75,3 +75,15 @@
 .karaoke .karaoke-content p {
   margin: 10px 0;
 }
+
+.karaoke .karaoke-content .word {
+  position: relative;
+}
+
+.karaoke .karaoke-content .word span {
+  position: absolute;
+  left: 0;
+  overflow: hidden;
+  width: 0;
+  color: yellow;
+}
