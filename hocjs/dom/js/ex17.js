@@ -171,14 +171,11 @@ var handlePaintColor = function (currentTime) {
       if (currentTime > startTime && currentTime < endTime) {
         var rate = ((currentTime - startTime) / (endTime - startTime)) * 100;
         wordItem.children[0].style.width = `${rate}%`;
-        if (index > 0) {
-          wordEl[index - 1].children[0].style.width = `${rate}%`;
+
+        if (index > 0 && currentTime >= wordEl[index - 1].dataset.endTime) {
+          wordEl[index - 1].children[0].style.width = `100%`;
         }
       }
-
-      // if (index > 0 && currentTime >= wordEl[index - 1].endTime) {
-      //   wordEl[index - 1].children[0].style.width = `${rate}%`;
-      // }
     });
   }
 };

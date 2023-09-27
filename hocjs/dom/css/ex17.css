@@ -78,6 +78,7 @@
 
 .karaoke .karaoke-content .word {
   position: relative;
+  white-space: nowrap;
 }
 
 .karaoke .karaoke-content .word span {
