@@ -30,7 +30,6 @@ const app = {
 
   //Call API
   getPosts: async function (query = {}) {
-    console.log(query);
     // let queryString = new URLSearchParams(query).toString();
     let queryString = Object.entries(query)
       .map((item) => {
@@ -41,8 +40,15 @@ const app = {
 
     queryString = queryString ? "?" + queryString : "";
 
-    const { data: posts } = await client.get(`/posts${queryString}`);
+    const { data: posts, response } = await client.get(`/posts${queryString}`);
     this.render(posts);
+
+    //Tính tổng số trang
+    //totalPage = Math.ceil(Tổng số bài viết / limit)
+    const totalPosts = response.headers.get("x-total-count");
+    const totalPage = Math.ceil(totalPosts / PAGE_LIMIT);
+
+    this.pagination(totalPage);
   },
 
   handleSearch: function () {
@@ -65,6 +71,30 @@ const app = {
 
       this.getPosts(this.query);
     });
+  },
+
+  pagination: function (totalPage) {
+    const paginationRoot = document.querySelector(".pagination-root");
+
+    //Tạo 1 array từ 0 đến totalPage
+    const range = [...Array(totalPage).keys()];
+
+    paginationRoot.innerHTML = `<nav class="d-flex justify-content-end mt-3">
+    <ul class="pagination pagination-sm">
+      <li class="page-item"><a class="page-link" href="#">Trước</a></li>
+      ${range
+        .map(
+          (index) =>
+            `<li class="page-item ${
+              +this.query._page === index + 1 ? "active" : ""
+            }"><a class="page-link" href="#">${index + 1}</a></li>`,
+        )
+        .join("")}
+      
+      
+      <li class="page-item"><a class="page-link" href="#">Sau</a></li>
+    </ul>
+  </nav>`;
   },
 
   //Khởi động app
