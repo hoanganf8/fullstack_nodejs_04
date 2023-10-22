@@ -10,14 +10,17 @@ const app = {
     _limit: PAGE_LIMIT,
     _page: 1,
   },
+  modalEl: document.querySelector("#post-detail"),
   render: function (posts) {
     const stripHtml = (html) => html.replace(/(<([^>]+)>)/gi, "");
     this.rootEl.innerHTML = `<div class="row g-3">
     ${posts
       .map(
-        ({ title, excerpt }) => `<div class="col-6 col-md-4">
+        ({ id, title, excerpt }) => `<div class="col-6 col-md-4">
     <div class="post-item border p-3">
-      <h3><a href="#">${stripHtml(title)}</a></h3>
+      <h3><a href="#" data-bs-toggle="modal" data-bs-target="#post-detail" data-id="${id}">${stripHtml(
+          title,
+        )}</a></h3>
       <p>
         ${stripHtml(excerpt)}
       </p>
@@ -42,6 +45,9 @@ const app = {
 
     const { data: posts, response } = await client.get(`/posts${queryString}`);
     this.render(posts);
+    window.scroll({
+      top: 0,
+    });
 
     //Tính tổng số trang
     //totalPage = Math.ceil(Tổng số bài viết / limit)
@@ -81,20 +87,88 @@ const app = {
 
     paginationRoot.innerHTML = `<nav class="d-flex justify-content-end mt-3">
     <ul class="pagination pagination-sm">
-      <li class="page-item"><a class="page-link" href="#">Trước</a></li>
+      ${
+        this.query._page > 1
+          ? '<li class="page-item"><a class="page-link page-prev" href="#">Trước</a></li>'
+          : ""
+      }
       ${range
         .map(
           (index) =>
             `<li class="page-item ${
               +this.query._page === index + 1 ? "active" : ""
-            }"><a class="page-link" href="#">${index + 1}</a></li>`,
+            }"><a class="page-link page-number" href="#">${index + 1}</a></li>`,
         )
         .join("")}
       
-      
-      <li class="page-item"><a class="page-link" href="#">Sau</a></li>
+      ${
+        this.query._page < totalPage
+          ? `<li class="page-item"><a class="page-link page-next" href="#">Sau</a></li>`
+          : ""
+      }
     </ul>
   </nav>`;
+  },
+
+  handleGoPage: function () {
+    const paginationRoot = document.querySelector(".pagination-root");
+    paginationRoot.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (e.target.classList.contains("page-number")) {
+        const pageNumber = e.target.innerText;
+        this.query._page = pageNumber;
+      }
+
+      if (e.target.classList.contains("page-prev")) {
+        this.query._page -= 1;
+      }
+
+      if (e.target.classList.contains("page-next")) {
+        this.query._page += 1;
+      }
+
+      this.getPosts(this.query);
+    });
+  },
+
+  handleShowDetail: function () {
+    let postId = null;
+    this.rootEl.addEventListener("click", (e) => {
+      //Kiểm tra xem vừa click vào chỗ nào?
+      if (e.target.dataset.bsTarget === "#post-detail") {
+        postId = e.target.dataset.id;
+      }
+    });
+    this.modalEl.addEventListener("shown.bs.modal", () => {
+      if (postId) {
+        this.getPost(postId);
+      }
+    });
+  },
+
+  handleCloseModal: function () {
+    this.modalEl.addEventListener("hidden.bs.modal", () => {
+      const titleEl = this.modalEl.querySelector(".modal-title");
+      const bodyEl = this.modalEl.querySelector(".modal-body");
+      titleEl.innerText = "";
+      bodyEl.innerText = "";
+    });
+  },
+
+  getPost: async function (id) {
+    const { data: post, response } = await client.get(`/posts/${id}`);
+
+    const titleEl = this.modalEl.querySelector(".modal-title");
+    const bodyEl = this.modalEl.querySelector(".modal-body");
+
+    if (response.ok) {
+      const { title, content } = post;
+      titleEl.innerText = title;
+      bodyEl.innerText = content;
+    } else {
+      titleEl.innerText = `404 Not Found`;
+      bodyEl.innerText = `Không tìm thấy bài viết`;
+    }
   },
 
   //Khởi động app
@@ -102,6 +176,9 @@ const app = {
     this.getPosts(this.query);
     this.handleSearch();
     this.handleSort();
+    this.handleGoPage();
+    this.handleShowDetail();
+    this.handleCloseModal();
   },
 };
 
