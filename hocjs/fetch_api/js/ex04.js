@@ -12,6 +12,7 @@ const app = {
     return status;
   },
   render: function () {
+    console.log("re-render");
     let html;
 
     if (this.isLogin()) {
@@ -22,6 +23,8 @@ const app = {
           <li><a href="#" class="text-decoration-none logout">Đăng xuất</a></li>
         </ul>
       </div>`;
+
+      this.getProfile();
     } else {
       html = `<div class="container py-3">
         <div class="row justify-content-center">
@@ -47,8 +50,6 @@ const app = {
     }
 
     this.root.innerHTML = html;
-
-    this.getProfile();
   },
   addEvent: function () {
     this.root.addEventListener("submit", (e) => {
@@ -145,3 +146,15 @@ const app = {
 };
 
 app.start();
+
+/*
+request -> accessToken chưa hết hạn -> ok
+request -> accessToken hết hạn -> failed
+Giải pháp: 
+- request lấy lại accessToken (Dựa vào refresh)
+- Lưu accessToken mới vào storage
+- Gọi lại request bị failed
+*/
+
+//Promise, Async Await, Closure
+//interceptors
