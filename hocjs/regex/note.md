@@ -40,3 +40,32 @@ Khớp độ dài: Các biểu thức trong Regex mặc định là 1 ký tự
 
 Lưu ý: Khi gặp các ký hiệu của Regex mà vẫn muốn kiểm tra -> Thêm ký hiệu (escape) \ phía trước
 . [ ] / +
+
+## Phủ định và hoặc
+
+- ^ -> Phủ định
+- | -> Hoặc
+
+## Capturing Group
+
+-> Kỹ thuật lấy 1 phần trong biểu thức chính quy tìm được
+-> Không áp dụng với global
+
+## Non-Capturing Group
+
+-> Loại bỏ giá trị trong cặp ngoặc tròn ra khỏi kết quả
+-> Áp dụng khi phải gom nhóm nhưng lại không muốn kết quả được hiển thị
+
+Ký hiệu: (?:regex)
+
+## Greedy, Lazy
+
+- Tham lam khi sử dụng dấu . để đại diện cho tất cả các ký tự
+- Khắc phục nó bằng cách thêm dấu ? vào phía sau biểu thức (Sau độ dài)
+
+## Đối sánh chuỗi khi thay thế
+
+- Capturing 1 -> $1
+- Capturing 2 -> $2
+- Capturing 3 -> $3
+- Capturing n -> $n
