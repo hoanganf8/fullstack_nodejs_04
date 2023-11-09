@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom/client";
 import React from "react";
+import App from "./App";
 
 //Render UI
 const root = document.querySelector("#root");
@@ -55,14 +56,32 @@ const root = document.querySelector("#root");
 // );
 
 //JSX
-const div = (
-  <div className="main" id="main">
-    <h1>Học React không khó</h1>
-    <h2>Học React dễ hơn js</h2>
-  </div>
-);
-console.log(div);
+// const title = "Hello F8";
+// const getName = () => {
+//   return <h2>Hoàng An</h2>;
+// };
+// const Product = () => {
+//   return <h2>Sản phẩm ABC</h2>;
+// }; //=> Component
+// const Welcome = () => {
+//   return <h2>Học React không khó</h2>;
+// };
+// class Welcome2 extends React.Component {
+//   render() {
+//     return <h2>Học React dễ hơn JS thuần</h2>;
+//   }
+// }
+// const div = (
+//   <div className="content">
+//     <h1>{title}</h1>
+//     {getName()}
+//     <Product />
+//     <Welcome></Welcome>
+//     <Welcome2 />
+//   </div>
+// );
+// console.log(div);
 
-ReactDOM.createRoot(root).render(div);
+ReactDOM.createRoot(root).render(<App />);
 
 //JSX => React Element (Thông qua Babel) => HTML (Thông qua ReactDOM)
