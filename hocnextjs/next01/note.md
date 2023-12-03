@@ -11,3 +11,7 @@ Request --> Route --> RootLayout --> Custom Layout --> Page --> Render JSX
 
 - Nội dung chính của trang
 - 1 page thuộc tính 1 route
+
+# Request - Response Lifecycle
+
+Request --> Middleware -> Route --> RootLayout --> Custom Layout --> Page --> Responseb(html, json, image,...)
