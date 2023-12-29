@@ -1,0 +1,13 @@
+<h1>Học Express không khó</h1>
+<h2><%= title %></h2>
+<h2><%- content %></h2>
+<hr />
+<% if (status) { %>
+<div><%- include('./banner') %></div>
+<% } %>
+<hr />
+<ul>
+  <% users.forEach(user => { %>
+  <li><%= user %></li>
+  <% }) %>
+</ul>

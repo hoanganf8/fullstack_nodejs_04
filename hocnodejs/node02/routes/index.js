@@ -1,11 +1,8 @@
 import express from "express";
 const router = express.Router();
+import homeController from "../controllers/home.controller.js";
 
-router.get('/', (req, res) => {
-    res.send('<h1>Học Express không khó</h1>');
-});
-router.get('/san-pham', (req, res) => {
-    res.send('<h1>Sản phẩm</h1>');
-});
+router.get("/", homeController.index);
+router.get("/san-pham", homeController.getProducts);
 
 export default router;

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      <%= typeof pageTitle !== 'undefined' ? pageTitle: `F8 - Học lập trình để
+      đi làm` %>
+    </title>
+  </head>
+
+  <body>
+    <header>
+      <h2>HEADER</h2>
+
+      <h3>
+        <% if (req.session?.userLogin) { %> Chào bạn: <%=
+        req.session?.userLogin?.name %>
+        <a href="/dang-xuat">Đăng xuất</a>
+        <% } else { %>
+        <a href="/dang-nhap">Đăng nhập</a>
+        <% } %>
+      </h3>
+    </header>
+    <main><%- body %></main>
+    <footer>
+      <h2>FOOTER</h2>
+    </footer>
+  </body>
+</html>
