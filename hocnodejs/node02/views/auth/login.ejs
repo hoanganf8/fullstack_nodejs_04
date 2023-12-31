@@ -2,11 +2,40 @@
 
 <form action="" method="post">
   <div>
+    <label for="">Name</label>
+    <div>
+      <input
+        type="text"
+        name="name"
+        placeholder="Name..."
+        value="<%= getOld(old, 'name') %>"
+      />
+    </div>
+    <%= getError(errors, 'name'); %>
+  </div>
+  <div>
     <label for="">Email</label>
     <div>
-      <input type="email" name="email" placeholder="Email..." />
+      <input
+        type="text"
+        name="email"
+        placeholder="Email..."
+        value="<%= getOld(old, 'email') %>"
+      />
     </div>
     <%= getError(errors, 'email'); %>
+  </div>
+  <div>
+    <label for="">Phone</label>
+    <div>
+      <input
+        type="text"
+        name="phone"
+        placeholder="Phone..."
+        value="<%= getOld(old, 'phone') %>"
+      />
+    </div>
+    <%= getError(errors, 'phone'); %>
   </div>
   <div>
     <label for="">Password</label>
