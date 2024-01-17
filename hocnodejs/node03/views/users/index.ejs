@@ -1,4 +1,5 @@
 <h1>Danh sách người dùng</h1>
+<a href="/users/add" class="btn btn-primary mb-3">Thêm mới</a>
 <form class="mb-3" action="">
   <div class="row">
     <div class="col-3">
@@ -21,6 +22,9 @@
     </div>
   </div>
 </form>
+<% if (msg.length) { %>
+<div class="alert alert-success mt-2"><%= msg %></div>
+<% } %>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -39,8 +43,18 @@
       <td><%= user.name %></td>
       <td><%= user.email %></td>
       <td><%= user.status ? 'Kích hoạt': 'Chưa kích hoạt' %></td>
-      <td><a href="#" class="btn btn-warning">Sửa</a></td>
-      <td><a href="#" class="btn btn-danger">Xóa</a></td>
+      <td>
+        <a href="/users/edit/<%= user.id %>" class="btn btn-warning">Sửa</a>
+      </td>
+      <td>
+        <form
+          action="/users/delete/<%= user.id %>"
+          method="post"
+          onsubmit="return confirm('Bạn có chắc chắn?')"
+        >
+          <button class="btn btn-danger">Xóa</button>
+        </form>
+      </td>
     </tr>
     <% }) %>
   </tbody>
