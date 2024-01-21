@@ -40,6 +40,8 @@ module.exports = (sequelize, DataTypes) => {
       updatedAt: "updated_at",
       //Nếu muốn bỏ 2 trường createdAt và updatedAt --> Khai báo timestamps: false
       // timestamps: false,
+      paranoid: true,
+      deletedAt: "deleted_at",
       tableName: "users",
     },
   );
