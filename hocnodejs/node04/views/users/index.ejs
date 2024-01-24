@@ -28,6 +28,7 @@
       <th width="5%">STT</th>
       <th>Tên</th>
       <th>Email</th>
+      <th>Điện thoại</th>
       <th>Trạng thái</th>
       <th width="5%">Sửa</th>
       <th width="5%">Xóa</th>
@@ -39,6 +40,7 @@
       <td><%= index+1 %></td>
       <td><%= user.name %></td>
       <td><%= user.email %></td>
+      <td><%= user.phone?.value %></td>
       <td width="15%">
         <%- user.status ? `<span class="badge bg-success">Kích hoạt</span>`:
         '<span class="badge bg-danger">Chưa kích hoạt</span>'; %>
