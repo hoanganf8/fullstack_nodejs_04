@@ -4,7 +4,7 @@ const { User, Phone, Post, Course } = require("../models/index");
 const sendMail = require("../utils/mail");
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index", { title: "Express" });
+  res.render("index", { req });
 });
 
 router.get("/test-assoc", async (req, res) => {

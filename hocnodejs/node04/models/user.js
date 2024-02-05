@@ -9,19 +9,19 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.hasOne(models.Phone, {
-        foreignKey: "user_id",
-        as: "phone",
-      });
-      User.hasMany(models.Post, {
-        foreignKey: "user_id",
-        as: "posts",
-      });
-      User.belongsToMany(models.Course, {
-        foreignKey: "user_id",
-        through: "users_courses",
-        as: "courses",
-      });
+      // User.hasOne(models.Phone, {
+      //   foreignKey: "user_id",
+      //   as: "phone",
+      // });
+      // User.hasMany(models.Post, {
+      //   foreignKey: "user_id",
+      //   as: "posts",
+      // });
+      // User.belongsToMany(models.Course, {
+      //   foreignKey: "user_id",
+      //   through: "users_courses",
+      //   as: "courses",
+      // });
     }
   }
   User.init(
@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      name: {
+      fullname: {
         type: DataTypes.STRING,
       },
       email: {
@@ -44,6 +44,9 @@ module.exports = (sequelize, DataTypes) => {
       status: {
         type: DataTypes.BOOLEAN,
       },
+      provider_id: {
+        type: DataTypes.INTEGER,
+      },
     },
     {
       sequelize,
@@ -53,8 +56,8 @@ module.exports = (sequelize, DataTypes) => {
       updatedAt: "updated_at",
       //Nếu muốn bỏ 2 trường createdAt và updatedAt --> Khai báo timestamps: false
       // timestamps: false,
-      paranoid: true,
-      deletedAt: "deleted_at",
+      // paranoid: true,
+      // deletedAt: "deleted_at",
       tableName: "users",
     },
   );
