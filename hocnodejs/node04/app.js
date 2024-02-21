@@ -14,6 +14,7 @@ const passportGoogle = require("./passports/passport.google");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var authRouter = require("./routes/auth");
+var apiRouter = require("./routes/api");
 const { User } = require("./models/index");
 const authMiddleware = require("./middlewares/auth.middleware");
 
@@ -51,6 +52,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use("/api", apiRouter);
 app.use("/auth", authRouter);
 app.use(authMiddleware);
 app.use("/", indexRouter);
