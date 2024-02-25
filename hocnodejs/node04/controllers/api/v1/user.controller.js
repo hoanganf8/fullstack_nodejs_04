@@ -95,4 +95,22 @@ module.exports = {
       return errorResponse(res, 400, "Bad Request", errors);
     }
   },
+  update: (req, res) => {
+    const method = req.method;
+    if (method === "PUT") {
+      //PUT
+      const body = {
+        name: null,
+        email: null,
+        password: null,
+        status: null,
+        ...req.body,
+      };
+    } else {
+      //PATCH
+      const body = req.body;
+    }
+  },
+  delete: (req, res) => {},
+  deletes: (req, res) => {},
 };
