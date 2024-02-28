@@ -17,8 +17,13 @@ var authRouter = require("./routes/auth");
 var apiRouter = require("./routes/api");
 const { User } = require("./models/index");
 const authMiddleware = require("./middlewares/auth.middleware");
-
+const cors = require("cors");
 var app = express();
+// app.use((req, res, next) => {
+//   res.set("Access-Control-Allow-Origin", "http://127.0.0.1:53097");
+//   res.set("Access-Control-Allow-Headers", "Authorization");
+//   next();
+// });
 app.use(
   session({
     secret: "f8",
@@ -52,9 +57,24 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/api", apiRouter);
+var whitelist = ["http://127.0.0.1:53097", "https://fullstack.edu.vn"];
+var corsOptions = {
+  origin: function (origin, callback) {
+    const mode = process.env.NODE_ENV || "development";
+    if (mode === "development") {
+      return callback(null, true);
+    }
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+
+app.use("/api", cors(corsOptions), apiRouter);
 app.use("/auth", authRouter);
-app.use(authMiddleware);
+// app.use(authMiddleware);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 

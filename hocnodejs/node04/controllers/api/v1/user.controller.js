@@ -3,6 +3,7 @@ const { successResponse, errorResponse } = require("../../../helpers/response");
 const { Op } = require("sequelize");
 const { object, string } = require("yup");
 const bcrypt = require("bcrypt");
+const UserTransformer = require("../../../transformers/user.transformer");
 module.exports = {
   index: async (req, res) => {
     const {
@@ -29,7 +30,7 @@ module.exports = {
     }
     const options = {
       order: [[sort, order]],
-      attributes: { exclude: "password" },
+      // attributes: { exclude: "password" },
       where: filter,
     };
     if (Number.isInteger(+limit) && Number.isInteger(+page)) {
@@ -39,7 +40,9 @@ module.exports = {
     }
     try {
       const { count, rows: users } = await User.findAndCountAll(options);
-      return successResponse(res, 200, "Success", users, { count });
+      return successResponse(res, 200, "Success", new UserTransformer(users), {
+        count,
+      });
     } catch (e) {
       return errorResponse(res, 500, "Server Error");
     }
@@ -53,7 +56,7 @@ module.exports = {
       if (!user) {
         return errorResponse(res, 404, "User not found");
       }
-      return successResponse(res, 200, "Success", user);
+      return successResponse(res, 200, "Success", new UserTransformer(user));
     } catch (e) {
       return errorResponse(res, 500, "Server Error");
     }

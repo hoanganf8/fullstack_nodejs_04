@@ -2,6 +2,8 @@ var express = require("express");
 var router = express.Router();
 const { User, Phone, Post, Course } = require("../models/index");
 const sendMail = require("../utils/mail");
+const { createClient } = require("redis");
+
 /* GET home page. */
 router.get("/", function (req, res, next) {
   res.render("index", { req });
@@ -63,6 +65,24 @@ router.get("/test-mail", async (req, res) => {
     "Tôi là giảng viên lớp Fulstack K4",
   );
   res.json(info);
+});
+
+router.get("/test-redis", async (req, res) => {
+  const client = await createClient({
+    // socket: {
+    //   host: "172.31.128.202",
+    //   port: 6379,
+    // },
+    // password: "123456",
+    // username: "default",
+  })
+    .on("error", (err) => console.log("Redis Client Error", err))
+    .connect();
+  await client.set("username", "hoangan.web1", "EX", 60 * 60 * 24);
+  const value = await client.get("username");
+
+  await client.disconnect();
+  res.json({ value });
 });
 
 module.exports = router;
