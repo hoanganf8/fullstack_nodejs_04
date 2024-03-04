@@ -4,8 +4,12 @@ const { Op } = require("sequelize");
 const { object, string } = require("yup");
 const bcrypt = require("bcrypt");
 const UserTransformer = require("../../../transformers/user.transformer");
+// const connectRedis = require("../../../utils/redis");
+const Cache = require("../../../core/cache");
 module.exports = {
   index: async (req, res) => {
+    // const redis = await connectRedis();
+
     const {
       sort = "id",
       order = "asc",
@@ -39,7 +43,33 @@ module.exports = {
       options.offset = offset;
     }
     try {
-      const { count, rows: users } = await User.findAndCountAll(options);
+      // const usersRedis = await redis.get("users-cache");
+      // let count, users;
+      // if (!usersRedis) {
+      //   const result = await User.findAndCountAll(options);
+      //   count = result.count;
+      //   users = result.rows;
+      //   await redis.set(
+      //     "users-cache",
+      //     JSON.stringify(result), //count, rows
+      //     "EX",
+      //     60 * 60 * 24,
+      //   );
+      //   console.log("No cache");
+      // } else {
+      //   const result = JSON.parse(usersRedis);
+      //   console.log("Cache");
+      //   count = result.count;
+      //   users = result.rows;
+      // }
+      const { rows: users, count } = await Cache.remember(
+        "users-cache",
+        60 * 60 * 24,
+        () => {
+          return User.findAndCountAll(options);
+        },
+      );
+
       return successResponse(res, 200, "Success", new UserTransformer(users), {
         count,
       });
@@ -47,12 +77,19 @@ module.exports = {
       return errorResponse(res, 500, "Server Error");
     }
   },
+
   find: async (req, res) => {
     const { id } = req.params;
     try {
-      const user = await User.findByPk(id, {
-        attributes: { exclude: "password" },
-      });
+      const user = await Cache.remember(
+        `user_cache_${id}`,
+        60 * 60 * 24,
+        () => {
+          return User.findByPk(id, {
+            attributes: { exclude: "password" },
+          });
+        },
+      );
       if (!user) {
         return errorResponse(res, 404, "User not found");
       }
